@@ -5,7 +5,6 @@ class Solution:
             return len(track)
         
         ans = set(nums)
-        del nums
 
         for n in track:
             if n-1 not in track and n+1 not in track:
@@ -39,4 +38,6 @@ class Solution:
                 
             if seq > mxseq:
                 mxseq = seq
+        del nums
+        
         return mxseq
