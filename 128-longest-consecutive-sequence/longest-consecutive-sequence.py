@@ -10,6 +10,7 @@ class Solution:
         for n in track:
             if n-1 not in track and n+1 not in track:
                 ans.remove(n)
+        del track
 
         mxseq = 1
         while ans:
