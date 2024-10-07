@@ -4,7 +4,6 @@ class Solution:
         majority = 1
 
         for n in nums[1:]:
-            print(n, major, majority)
             if n == major:
                 majority += 1
             else:
@@ -12,6 +11,4 @@ class Solution:
                 if majority <= 0:
                     major = n
                     majority = 1
-            print(n, major, majority)
-            print("-------")
         return major
