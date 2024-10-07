@@ -39,5 +39,5 @@ class Solution:
             if seq > mxseq:
                 mxseq = seq
         del nums
-        
+        del ans
         return mxseq
