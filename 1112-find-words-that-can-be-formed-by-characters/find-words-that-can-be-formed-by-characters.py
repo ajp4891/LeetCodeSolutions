@@ -1,19 +1,30 @@
 class Solution:
     def countCharacters(self, words: List[str], chars: str) -> int:
-        d = Counter(chars)
+        # d = Counter(chars)
 
-        total = 0
+        # total = 0
+        # for w in words:
+        #     dtmp = Counter(w)
+        #     include = True
+        #     cnt = 0
+        #     for k, v in dtmp.items():
+        #         if k not in d or v > d[k]:
+        #             include = False
+        #             break
+        #         cnt += v
+
+        #     if include:
+        #         total += cnt
+
+        # return total
+
+        ans = []
+
         for w in words:
-            dtmp = Counter(w)
-            include = True
-            cnt = 0
-            for k, v in dtmp.items():
-                if k not in d or v > d[k]:
-                    include = False
+            for c in set(w):
+                if chars.count(c) < w.count(c):
                     break
-                cnt += v
+            else:
+                ans.append(len(w))
 
-            if include:
-                total += cnt
-
-        return total
+        return sum(ans)
