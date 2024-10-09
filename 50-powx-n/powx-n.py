@@ -2,18 +2,18 @@ class Solution:
     def myPow(self, x: float, n: int) -> float:
         if n == 0:
             return 1
-
+        
         if n < 0:
-            n = -1 * n
-            x = 1.0 / x
-    
-        ans = x
-        oddans = 1
-        while n != 0:
-            if n % 2 == 1:
-                oddans *= ans
-                n -= 1
-            ans *= ans
-            n //= 2
+            x = 1 / x
+            n = -n
 
-        return oddans
+        res = 1
+        cur_prod = x
+
+        while n > 0:
+            if n % 2 == 1:
+                res *= cur_prod
+            cur_prod *= cur_prod
+            n //= 2
+        
+        return res
