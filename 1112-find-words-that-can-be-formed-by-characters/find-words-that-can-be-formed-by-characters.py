@@ -5,15 +5,15 @@ class Solution:
         total = 0
         for w in words:
             dtmp = Counter(w)
-            exclude = False
+            include = True
             cnt = 0
             for k, v in dtmp.items():
                 if k not in d or v > d[k]:
-                    exclude = True
+                    include = False
                     break
                 cnt += v
 
-            if not exclude:
+            if include:
                 total += cnt
 
         return total
