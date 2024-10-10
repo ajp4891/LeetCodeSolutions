@@ -1,12 +1,10 @@
 class Solution:
     def maximumCoins(self, heroes: List[int], monsters: List[int], coins: List[int]) -> List[int]:
         d = sorted(zip(monsters, coins), key=lambda x: x[0])
-        coins_sum = [0] * len(coins)
-        prefix_sum = 0
+        coins_sum = [d[0][1]]
 
-        for i, (_, coin) in enumerate(d):
-            prefix_sum += coin
-            coins_sum[i] = prefix_sum
+        for i, (_, coin) in enumerate(d[1:]):
+            coins_sum.append(coins_sum[-1] + coin)
 
         ans = [0] * len(heroes)
         for i, h in enumerate(heroes):
