@@ -12,5 +12,4 @@ class Solution:
 
             maxw = max(maxw, r - l)
             r += 1
-        print(rmax)
         return maxw
