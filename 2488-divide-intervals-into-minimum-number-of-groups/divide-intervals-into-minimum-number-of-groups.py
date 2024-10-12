@@ -1,22 +1,11 @@
 class Solution:
     def minGroups(self, intervals: List[List[int]]) -> int:
-        if len(intervals) == 1:
-            return 1
-
-        events = []
+        min_heap = []
+        intervals.sort(key=lambda x: x[0])
 
         for s, e in intervals:
-            events.append([s, 1])
-            events.append([e, -1])
+            if min_heap and min_heap[0] < s:
+                heapq.heappop(min_heap)
+            heapq.heappush(min_heap, e)
 
-        events.sort(key=lambda x: (x[0], -x[1]))
-
-        maxgroups = 0
-        print(events)
-        currentgroup = 0
-
-        for t, e in events:
-            currentgroup = currentgroup + e
-            maxgroups = max(maxgroups, currentgroup)
-
-        return maxgroups
+        return len(min_heap)
