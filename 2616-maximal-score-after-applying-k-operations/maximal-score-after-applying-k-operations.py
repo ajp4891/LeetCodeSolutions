@@ -4,8 +4,5 @@ class Solution:
         heapq.heapify(nums)
         score = 0
         for _ in range(k):
-            val = -heapq.heappop(nums)
-            score += val
-            heapq.heappush(nums, -ceil(val / 3))
-
+            score -= heapq.heappushpop(nums, floor(nums[0]/3))
         return score
