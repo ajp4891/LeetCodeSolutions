@@ -12,8 +12,12 @@ class Solution:
         visited = {(0, 0)}
         q = [[grid[0][0], 0, 0]]
         score = 0
+        prev_query = -1
 
         for a, ind in queries_sorted:
+            if prev_query == a:
+                ans[ind] = score
+
             while q and q[0][0] < a:
                 score += 1
                 _, i, j = heapq.heappop(q)
@@ -27,5 +31,7 @@ class Solution:
                             visited.add((i2, j2))
 
             ans[ind] = score
+            prev_query = a
+
 
         return ans
