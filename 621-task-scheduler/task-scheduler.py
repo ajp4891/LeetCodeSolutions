@@ -25,7 +25,7 @@ class Solution:
 
             # ans += task_count if not heap else n + 1
 
-            ## Ajays solution
+            ## solution
             
             tmp = []
             len_vals = len(heap)
