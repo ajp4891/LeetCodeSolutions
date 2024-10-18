@@ -1,9 +1,9 @@
 class Solution:
     def minCapability(self, nums: List[int], k: int) -> int:
-        def in_the_range(stole):
+        def in_the_range(need):
             count = i = 0
             while i < len(nums):
-                if nums[i] <= stole:
+                if nums[i] <= need:
                     count += 1
                     i += 1
                 i += 1
