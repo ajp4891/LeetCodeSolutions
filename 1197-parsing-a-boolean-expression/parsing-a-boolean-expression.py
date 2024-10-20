@@ -1,5 +1,8 @@
 class Solution:
     def parseBoolExpr(self, expression: str) -> bool:
+        if len(expression) == 1:
+            return expression == "t"
+        
         ops = {'&', '|', '!'}
 
         stack = []
