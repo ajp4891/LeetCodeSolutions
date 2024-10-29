@@ -5,11 +5,9 @@ class Solution:
         directions = [(-1, 1), (0, 1), (1, 1)]
 
         def dfs(r, c, prev_val):
-            print(r, c, not 0 <= r < m, not 0 <= c < n)
             if not 0 <= r < m or not 0 <= c < n:
                 return 0
 
-            print(prev_val, grid[r][c], prev_val >= grid[r][c])
             if prev_val >= grid[r][c]:
                 return 0
 
