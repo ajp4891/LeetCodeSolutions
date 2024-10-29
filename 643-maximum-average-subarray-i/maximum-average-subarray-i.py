@@ -3,13 +3,13 @@ class Solution:
         i = 0
         j = k - 1
         runsum = sum(nums[:k])
-        mxavg = runsum / k
+        mxavg = runsum
 
         while j < len(nums) - 1:
             runsum -= nums[i]
             i += 1
             j += 1
             runsum += nums[j]
-            mxavg = max(mxavg, runsum / k)
+            mxavg = max(mxavg, runsum)
 
-        return mxavg
+        return mxavg / k
