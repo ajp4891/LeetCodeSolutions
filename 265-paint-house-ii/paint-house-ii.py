@@ -7,9 +7,9 @@ class Solution:
         ans = float('inf')
         dp = dict()
 
-        def dfs(totalCost, houseId, prev_colorId):
+        def dfs(houseId, prev_colorId):
             if houseId >= total_houses:
-                return totalCost
+                return 0
 
             if (houseId, prev_colorId) in dp:
                 return dp[(houseId, prev_colorId)]
@@ -18,9 +18,9 @@ class Solution:
         
             for i, color in enumerate(costs[houseId]):
                 if i != prev_colorId or houseId == 0:
-                    cost = dfs(totalCost, houseId + 1, i) + color
+                    cost = dfs(houseId + 1, i) + color
                     dp[(houseId, prev_colorId)] = min(dp[(houseId, prev_colorId)], cost)
 
             return dp[(houseId, prev_colorId)]
 
-        return dfs(0, 0, 0)
+        return dfs(0, 0)
