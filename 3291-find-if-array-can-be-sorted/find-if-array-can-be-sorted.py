@@ -1,22 +1,24 @@
 class Solution:
     def canSortArray(self, nums):
-        n = len(nums)
+        min_prev = nums[0]
+        max_prev = nums[0]
+        max_prev_prev = float('-inf')
+        set_bits = bin(nums[0]).count("1")
 
-        # Avoid modifying the input directly
-        # Create a copy of the input array
-        values = nums.copy()
+        for i in range(1, len(nums)):
+            if bin(nums[i]).count("1") == set_bits:
+                max_prev = max(max_prev, nums[i])
+                min_prev = min(min_prev, nums[i])
+            else:
+                if min_prev < max_prev_prev:
+                    return False
 
-        for i in range(n):
-            for j in range(n - i - 1):
-                if values[j] <= values[j + 1]:
-                    # No swap needed
-                    continue
-                else:
-                    if bin(values[j]).count("1") == bin(values[j + 1]).count(
-                        "1"
-                    ):
-                        # Swap the elements
-                        values[j], values[j + 1] = values[j + 1], values[j]
-                    else:
-                        return False
+                max_prev_prev = max_prev
+                max_prev = nums[i]
+                min_prev = nums[i]
+                set_bits = bin(nums[i]).count("1")
+
+        if min_prev < max_prev_prev:
+            return False
+
         return True
