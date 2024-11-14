@@ -1,29 +1,31 @@
 class Solution:
-    def can_distribute(self, x: int, quantities: List[int], n: int) -> bool:
-        j = 0
-        remaining = quantities[j]
-
-        for i in range(n):
-            if remaining <= x:
-                j += 1
-                if j == len(quantities):
-                    return True
-                else:
-                    remaining = quantities[j]
+    def _solve_with_bin_search_by_value(self, n: int, q: List[int]) -> int:
+        # TC: O(m*log(m) + m*log(p)), where p := max(q)
+        q.sort(reverse=True)
+        m = len(q)
+        left, right = 1, q[0]
+        res = right
+        while left <= right:
+            free_slots = n - m
+            mid = (left + right) // 2
+            i = 0
+            while i < m and free_slots >= 0:
+                slots = math.ceil(q[i] / mid) - 1
+                if not slots:
+                    break
+                free_slots -= slots
+                i += 1
+            if free_slots < 0: #not enough slots
+                left = mid + 1
             else:
-                remaining -= x
-
-        return False
+                right = mid - 1
+                res = mid
+        
+        return res
+            
 
     def minimizedMaximum(self, n: int, quantities: List[int]) -> int:
-        left = 0
-        right = max(quantities)
+        if n == len(quantities):
+            return max(quantities)
 
-        while left < right:
-            middle = (left + right) // 2
-            if self.can_distribute(middle, quantities, n):
-                right = middle
-            else:
-                left = middle + 1
-
-        return left
+        return self._solve_with_bin_search_by_value(n, quantities)
