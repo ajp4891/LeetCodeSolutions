@@ -1,32 +1,29 @@
 class Solution:
-    def minimizedMaximum(self, n, quantities):
-        m = len(quantities)
+    def can_distribute(self, x: int, quantities: List[int], n: int) -> bool:
+        j = 0
+        remaining = quantities[j]
 
-        q = [(-q, q, 1) for q in quantities]
+        for i in range(n):
+            if remaining <= x:
+                j += 1
+                if j == len(quantities):
+                    return True
+                else:
+                    remaining = quantities[j]
+            else:
+                remaining -= x
 
-        heapq.heapify(q)
+        return False
 
-        for _ in range(n - m):
-            (
-                neg_ratio,
-                total_q,
-                curr_assigned_stores,
-            ) = heapq.heappop(q)
+    def minimizedMaximum(self, n: int, quantities: List[int]) -> int:
+        left = 0
+        right = max(quantities)
 
-            new_total_stores = curr_assigned_stores + 1
-            new_ratio = total_q / new_total_stores
+        while left < right:
+            middle = (left + right) // 2
+            if self.can_distribute(middle, quantities, n):
+                right = middle
+            else:
+                left = middle + 1
 
-            heapq.heappush(
-                q,
-                (
-                    -new_ratio,
-                    total_q,
-                    new_total_stores,
-                ),
-            )
-
-        _, total_q, total_stores = heapq.heappop(
-            q
-        )
-
-        return math.ceil(total_q / total_stores)
+        return left
