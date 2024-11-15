@@ -1,5 +1,9 @@
 class Solution:
     def shareCandies(self, candies: List[int], k: int) -> int:
+        if k == 0:
+            return len(set(candies))
+        if len(candies) <= k:
+            return 0
         l, r, n = 0, 0, len(candies)
 
         counter = Counter(candies)
