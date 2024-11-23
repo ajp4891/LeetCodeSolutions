@@ -11,15 +11,15 @@ class Solution:
         res = [["."] * m for _ in range(n)]
 
         for row in range(m):
-            r = n - 1
+            current_empty = n - 1
             for col in range(n - 1, -1, -1):
                 if box[row][col] == STONE:
-                    res[r][m - row - 1] = STONE
-                    r -= 1
+                    res[current_empty][m - row - 1] = STONE
+                    current_empty -= 1
                 elif box[row][col] == OBSTACLE:
-                    r = col
-                    res[r][m - row - 1] = OBSTACLE
-                    r -= 1
+                    current_empty = col
+                    res[current_empty][m - row - 1] = OBSTACLE
+                    current_empty -= 1
 
         return res
                 
