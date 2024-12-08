@@ -9,7 +9,7 @@ class Solution:
                 op = math.ceil(n / m) - 1
                 total_op += op
             
-            return False if total_op > maxOperations else True
+            return total_op <= maxOperations
 
         
         while l < r:
