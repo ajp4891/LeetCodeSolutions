@@ -1,5 +1,11 @@
 class Solution:
     def minimumSize(self, nums: List[int], maxOperations: int) -> int:
+        total = sum(nums)
+        num_groups = maxOperations + len(nums)
+
+        if num_groups >= total:
+            return 1
+
         l = 1
         r = max(nums)
 
