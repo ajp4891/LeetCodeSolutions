@@ -13,6 +13,7 @@ class Solution:
             q = queries[i]
             start = q[0]
             end = q[1]
-            ans[i] = pre[end] - pre[start] == 0
+            if pre[end] - pre[start] == 0:
+                ans[i] = True
 
         return ans
