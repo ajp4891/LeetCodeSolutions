@@ -4,7 +4,6 @@
 
 class Solution:
     def findCelebrity(self, n: int) -> int:
-        q = deque()
         celeb = 0
         for i in range(1, n):
             
