@@ -6,9 +6,8 @@ class Solution:
             heapq.heappush(heap, (n, i))
 
         for _ in range(k):
-            n, i = heapq.heappop(heap)
-            n *= multiplier
-            heapq.heappush(heap, (n, i))
-            nums[i] = n
+            _, i = heapq.heappop(heap)
+            nums[i] *= multiplier
+            heapq.heappush(heap, (nums[i], i))
 
         return nums
