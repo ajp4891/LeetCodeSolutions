@@ -1,5 +1,7 @@
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        if sum(gas) < sum(cost): return -1
+        
         total_gain = 0
         curr_gain = 0
         ans = 0
