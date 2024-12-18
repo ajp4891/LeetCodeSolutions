@@ -4,17 +4,17 @@ class Solution:
 
         for i, n in enumerate(prices):
             if not stack:
-                stack.append((n, i))
+                stack.append(i)
                 continue
             # print(i, stack, prices)
             while stack:
-                if n <= stack[-1][0]:
-                    prices[stack[-1][1]] -= n
+                if n <= prices[stack[-1]]:
+                    prices[stack[-1]] -= n
                     stack.pop()
                 else:
                     break
 
-            stack.append((n, i))
+            stack.append(i)
             # print(i, stack, prices)
 
         return prices
