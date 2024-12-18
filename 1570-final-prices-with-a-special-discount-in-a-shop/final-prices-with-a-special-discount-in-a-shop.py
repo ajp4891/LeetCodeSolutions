@@ -6,15 +6,9 @@ class Solution:
             if not stack:
                 stack.append(i)
                 continue
-            # print(i, stack, prices)
-            while stack:
-                if n <= prices[stack[-1]]:
-                    prices[stack[-1]] -= n
-                    stack.pop()
-                else:
-                    break
+            while stack and  n <= prices[stack[-1]]:
+                prices[stack[-1]] -= n
+                stack.pop()
 
             stack.append(i)
-            # print(i, stack, prices)
-
         return prices
