@@ -7,8 +7,8 @@ class Solution:
                 stack.append(i)
                 continue
             while stack and  n <= prices[stack[-1]]:
-                prices[stack[-1]] -= n
-                stack.pop()
+                prices[stack.pop()] -= n
+                
 
             stack.append(i)
         return prices
