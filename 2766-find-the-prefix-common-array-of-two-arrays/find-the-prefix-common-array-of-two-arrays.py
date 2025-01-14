@@ -6,10 +6,6 @@ class Solution:
         for i in range(len(A)):
             if A[i] == B[i]:
                 current_cnt += 1
-                aset.add(A[i])
-                bset.add(B[i])
-                ans.append(current_cnt)
-                continue
 
             if A[i] in bset:
                 current_cnt += 1
