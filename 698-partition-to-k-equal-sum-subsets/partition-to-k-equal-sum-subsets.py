@@ -12,7 +12,8 @@ class Solution:
         # Backtracking helper function
         def backtrack(index, subset_sums):
             if index == len(nums):
-                return all(s == target_sum for s in subset_sums)
+                # return all(s == target_sum for s in subset_sums)
+                return sum(subset_sums) == total_sum
             
             num = nums[index]
             for i in range(k):
