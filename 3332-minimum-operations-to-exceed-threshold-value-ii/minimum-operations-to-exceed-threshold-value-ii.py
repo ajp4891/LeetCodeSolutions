@@ -3,14 +3,10 @@ class Solution:
         heapq.heapify(nums)
         op = 0
 
-        while nums and len(nums) >= 2 and nums[0] < k:
-            # print("Before", nums)
-            x, y = heapq.heappop(nums), heapq.heappop(nums)
-            heapq.heappush(nums, x * 2 + y)
-            op += 1
-            # print("-->", op, " After", nums)
+        num = heapq.heappop(nums)
 
-        if not nums or nums[0] < k:
-            return 0
+        while num < k:
+            num = heapq.heappushpop(nums, num * 2 + heapq.heappop(nums))
+            op += 1
 
         return op
