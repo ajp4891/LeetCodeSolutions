@@ -6,7 +6,7 @@ class Solution:
         while nums and len(nums) >= 2 and nums[0] < k:
             # print("Before", nums)
             x, y = heapq.heappop(nums), heapq.heappop(nums)
-            heapq.heappush(nums, min(x, y) * 2 + max(x, y))
+            heapq.heappush(nums, x * 2 + y)
             op += 1
             # print("-->", op, " After", nums)
 
